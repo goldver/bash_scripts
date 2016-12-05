@@ -1,9 +1,9 @@
 
 #!/bin/bash
-# chmod +x ./scrum_role.sh
+# chmod +x ./replace_str_title.sh
 
-src="${HOME}/repos/chef_copy"
-dst="${HOME}/Desktop/scrum_role/"
+src="${HOME}/repos/chef"
+dst="${HOME}/Desktop/tmp/"
 scrum_name='scrum9'
 
 # create directory 
