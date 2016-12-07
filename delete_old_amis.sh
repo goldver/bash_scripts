@@ -6,25 +6,38 @@
 backup_type="daily"
 year="2016"
 
-save_days=1
+save_days=6
 
 # lookup next instances
 image_names="bi-app etl dw-app etl-pp"
 
 for image_name in $image_names; do
-	json=$(aws ec2 describe-images --filters Name=name,Values="${image_name}-${backup_type}-${year}-*-*" --query "Images[*].{imageid:ImageId, name:Name, date:CreationDate}")
+    echo '***************************************************'
+    echo 'Date                    | AMI IDs        | AMI Name'
+    echo '***************************************************'
+
+    json=$(aws ec2 describe-images --filters Name=name,Values="${image_name}-$backup_type-$year-*-*" --query "Images[*].{imageid:ImageId, name:Name, date:CreationDate}")
     length=`echo $json | jq -r '.[] | .imageid ' | wc -l`
-    [ $save_days -ge ${length} ] && echo "Info: no Backups to delete." && exit 1
+    [ $save_days -ge $length ] && echo "Info: no Backups to delete." && exit 1
 
     image_ids=$(echo $json | jq -r '.[] | .date + "  " + .imageid + "  " + .name' | sort | head -n $((length-${save_days})) | awk '{print $2}')
+    echo $json | jq -r '.[] | .date + "  " + .imageid + "  " + .name' | sort | head -n $((length-${save_days}))
+
+    echo '**************************************************'
+    echo          'Next AMIs will be derigester...'
+    echo '**************************************************'
 
     for image_id in $image_ids; do
-    	echo "Info: deregistering image: ${image_id}"
-    	aws ec2 deregister-image --image-id ${image_id}
-    done
+        echo "Info: deregistering image: $image_id"
+        aws ec2 deregister-image --image-id $image_id
+    done    
 done
 
 exit 0
+
+
+
+
 
 
 
