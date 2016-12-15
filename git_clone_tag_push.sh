@@ -33,7 +33,7 @@ TAG="tag_1"
 #cd ~ >> for jenkins
 
 if [ ! -d ${DST} ]; then
-  	mkdir ${DST}
+  	mkdir -p ${DST}
 fi
 
 cd ${DST}
@@ -45,7 +45,7 @@ for REPO in ${REPO_NAME[*]}; do
     git clone -b $BRANCH git@github.com:${ACCOUNT}/${REPO}
     cd ${DST}/${REPO}
     git tag -am ${REPO} -f ${TAG}; git push -u origin ${TAG}
-    cd .. 
+    cd ${DST} 
 done 
 
 # remove tmp dir
