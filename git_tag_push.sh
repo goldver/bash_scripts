@@ -33,7 +33,7 @@ TAG="tag_1"
 #cd ~ >> for jenkins
 
 if [ ! -d ${DST} ]; then
-  	mkdir ${DST}
+  	mkdir -p ${DST}
 fi
 
 cd ${DST}
@@ -48,5 +48,11 @@ for REPO in ${REPO_NAME[*]}; do
     cd .. 
 done 
 
+# git tag per repository
+# for REPO in ${REPO_NAME[*]}; do
+#     cd ${DST}/${REPO}
+#     git tag -am ${REPO} -f ${TAG}; git push -u origin ${TAG}
+# done
+
 # remove tmp dir
-rm -rf ${DST}
+#rm -rf ${DST}
