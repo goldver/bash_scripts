@@ -4,6 +4,7 @@ Bash scripts
 - delete_old_amis.sh     # Removes AMIs (daily, weekly etc) 
 - git_clone_tag_push.sh  # Clones repositories, set tags and pushes 
 - replace_str_title.sh   # Looking for and replaces strings 
+- ami_manipulation.sh    # AWS ami manipulation: looking, printing, parsing, sorting, deregistering  
 
 
 Usage
