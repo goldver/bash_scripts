@@ -3,7 +3,7 @@
 
 source $HOME/repos/devops-terraform/scripts/configs/scrum-services.txt
 my_path="${HOME}/Desktop/deploy_key"
-my_mail="devops@gett.com"
+my_mail="goldver@gmail.com"
 
 rm -rf "${my_path}"
 
