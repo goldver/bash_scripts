@@ -1,10 +1,11 @@
 Bash scripts 
 ==================
 - amis_backup.sh         # Makes backups of AMIs (daily, weekly etc) 
-- delete_old_amis.sh     # Removes AMIs (daily, weekly etc) 
+- amis_delete_old.sh     # Removes AMIs (daily, weekly etc) 
+- amis_manipulation.sh   # AWS ami manipulation: looking, printing, parsing, sorting, deregistering  
 - git_clone_tag_push.sh  # Clones repositories, set tags and pushes 
 - replace_str_title.sh   # Looking for and replaces strings 
-- ami_manipulation.sh    # AWS ami manipulation: looking, printing, parsing, sorting, deregistering  
+- key_pairs.sh    		 # Creates RSA key pairs and printing with specific format
 
 
 Usage
